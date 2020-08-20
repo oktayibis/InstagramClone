@@ -1,33 +1,36 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const FeedCard = (props) => {
   Icon.loadFont();
 
   return (
-    <View style={styles.container}>
-      <View style={styles.top}>
-        <View
-          style={{
-            flexDirection: 'row',
-          }}>
-          <Image
-            source={{uri: props.user.image}}
-            style={{width: 32, height: 32, borderRadius: 50}}
-          />
-          <Text style={{marginLeft: 10, alignSelf: 'center'}}>
-            {props.user.name}
-          </Text>
+    <TouchableOpacity>
+      <View style={styles.container}>
+        <View style={styles.top}>
+          <View
+            style={{
+              flexDirection: 'row',
+            }}>
+            <Image
+              source={{uri: props.user.image}}
+              style={{width: 32, height: 32, borderRadius: 50}}
+            />
+            <Text style={{marginLeft: 10, alignSelf: 'center'}}>
+              {props.user.name}
+            </Text>
+          </View>
+          <View>
+            <Icon name="dots-vertical" style={{fontSize: 20}} />
+          </View>
         </View>
         <View>
-          <Icon name="dots-vertical" style={{fontSize: 20}} />
+          <Image style={styles.img} source={{uri: props.user.image}} />
         </View>
       </View>
-      <View>
-        <Image style={styles.img} source={{uri: props.user.image}} />
-      </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

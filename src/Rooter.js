@@ -6,6 +6,7 @@ import Feeds from './screens/Feeds';
 import Login from './screens/Login';
 import {connect} from 'react-redux';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const Rooter = (props) => {
   Icon.loadFont();
@@ -31,10 +32,14 @@ const Rooter = (props) => {
             component={Feeds}
             options={{
               headerRight: () => (
-                <Icon name="send" style={{fontSize: 22, marginRight: 10}} />
+                <TouchableOpacity>
+                  <Icon name="send" style={{fontSize: 22, marginRight: 10}} />
+                </TouchableOpacity>
               ),
               headerLeft: () => (
-                <Icon name="camera" style={{fontSize: 22, marginLeft: 10}} />
+                <TouchableOpacity>
+                  <Icon name="camera" style={{fontSize: 22, marginLeft: 10}} />
+                </TouchableOpacity>
               ),
               headerTitle: (props) => <LogoTitle {...props} />,
             }}
