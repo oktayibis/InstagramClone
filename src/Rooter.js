@@ -1,18 +1,44 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Image} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Feeds from './screens/Feeds';
 import Login from './screens/Login';
 import {connect} from 'react-redux';
-const Rooter = (props) => {
-  const Stack = createStackNavigator();
+import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
+const Rooter = (props) => {
+  Icon.loadFont();
+
+  const Stack = createStackNavigator();
+  function LogoTitle() {
+    return (
+      <Image
+        style={{width: 100, height: 40}}
+        source={{
+          uri:
+            'https://pngimage.net/wp-content/uploads/2018/06/font-instagram-png-2.png',
+        }}
+      />
+    );
+  }
   return (
     <NavigationContainer>
       <Stack.Navigator>
         {props.isLogin ? (
-          <Stack.Screen name="feeds" component={Feeds} />
+          <Stack.Screen
+            name="feeds"
+            component={Feeds}
+            options={{
+              headerRight: () => (
+                <Icon name="send" style={{fontSize: 22, marginRight: 10}} />
+              ),
+              headerLeft: () => (
+                <Icon name="camera" style={{fontSize: 22, marginLeft: 10}} />
+              ),
+              headerTitle: (props) => <LogoTitle {...props} />,
+            }}
+          />
         ) : (
           <Stack.Screen options={{headerShown: false}} name="login">
             {(props) => <Login {...props} />}
