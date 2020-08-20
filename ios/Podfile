@@ -8,6 +8,7 @@ target 'InstagramClone' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+
   target 'InstagramCloneTests' do
     inherit! :complete
     # Pods for testing

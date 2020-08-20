@@ -14,7 +14,7 @@ const Rooter = (props) => {
         {props.isLogin ? (
           <Stack.Screen name="feeds" component={Feeds} />
         ) : (
-          <Stack.Screen name="login">
+          <Stack.Screen options={{headerShown: false}} name="login">
             {(props) => <Login {...props} />}
           </Stack.Screen>
         )}
