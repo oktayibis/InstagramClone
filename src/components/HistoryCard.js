@@ -25,9 +25,11 @@ const styles = StyleSheet.create({
   imgContainer: {
     // @Todo linear-gradient kontrol et.
     borderRadius: 50,
-    borderStartColor: 'orange',
-    borderEndColor: 'yellow',
     borderWidth: 2,
+    borderTopColor: 'red',
+    borderLeftColor: 'pink',
+    borderRightColor: 'orange',
+    borderBottomColor: 'yellow',
   },
   container: {
     margin: 10,
