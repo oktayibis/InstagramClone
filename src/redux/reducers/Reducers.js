@@ -1,7 +1,7 @@
 import {CHANGE_AUTH} from '../actions/Types';
 
 const INITIAL_STATE = {
-  isLogin: true,
+  isLogin: false,
   mockUser: {
     username: 'oktay',
     password: '12345',

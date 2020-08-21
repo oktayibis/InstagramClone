@@ -1,11 +1,7 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import Icon2 from 'react-native-vector-icons/dist/FontAwesome';
-import {
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-} from 'react-native-gesture-handler';
 
 const FeedCard = (props) => {
   Icon.loadFont();
@@ -38,11 +34,11 @@ const FeedCard = (props) => {
           <Icon name="dots-vertical" style={{fontSize: 20}} />
         </View>
       </View>
-      <TouchableWithoutFeedback onPress={() => handleDoubleTab()}>
+      <TouchableOpacity onPress={() => handleDoubleTab()}>
         <View>
           <Image style={styles.img} source={{uri: props.user.image}} />
         </View>
-      </TouchableWithoutFeedback>
+      </TouchableOpacity>
       <View style={styles.footer}>
         <View style={styles.iconLeft}>
           {!like ? (
