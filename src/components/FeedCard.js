@@ -2,11 +2,26 @@ import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import Icon2 from 'react-native-vector-icons/dist/FontAwesome';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from 'react-native-gesture-handler';
 
 const FeedCard = (props) => {
   Icon.loadFont();
   Icon2.loadFont();
+
+  const [like, setLike] = React.useState(false);
+  let lastTab = null;
+  const handleDoubleTab = () => {
+    const now = Date.now();
+    const DOUBLE_PRESS = 300;
+    if (lastTab && now - lastTab < DOUBLE_PRESS) {
+      setLike(!like);
+    } else {
+      lastTab = now;
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -23,14 +38,18 @@ const FeedCard = (props) => {
           <Icon name="dots-vertical" style={{fontSize: 20}} />
         </View>
       </View>
-      <TouchableOpacity>
+      <TouchableWithoutFeedback onPress={() => handleDoubleTab()}>
         <View>
           <Image style={styles.img} source={{uri: props.user.image}} />
         </View>
-      </TouchableOpacity>
+      </TouchableWithoutFeedback>
       <View style={styles.footer}>
         <View style={styles.iconLeft}>
-          <Icon2 name="heart-o" style={styles.icon} />
+          {!like ? (
+            <Icon2 name="heart-o" style={styles.icon} />
+          ) : (
+            <Icon2 name="heart" style={styles.icon} color="red" />
+          )}
           <Icon2 name="comment-o" style={styles.icon} />
           <Icon2 name="send-o" style={styles.icon} />
         </View>
